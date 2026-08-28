@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrouvaille Monterrey — Esperanza para tu Matrimonio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --wine: #6B1A2A;
+    --wine-dark: #4A1019;
+    --wine-light: #8C2E40;
+    --gold: #B8860B;
+    --gold-light: #D4A017;
+    --cream: #FAF7F2;
+    --cream-dark: #F0EAE0;
+    --text: #2C1810;
+    --text-muted: #6B5B52;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 17px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(107, 26, 42, 0.12);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--wine);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-cta {
+    background: var(--wine);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--wine-dark); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(to bottom right, rgba(107,26,42,0.06) 0%, transparent 60%),
+      var(--cream);
+    padding: 120px 32px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(107,26,42,0.08);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    border: 1px solid rgba(107,26,42,0.06);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wine);
+    border: 1px solid rgba(107,26,42,0.3);
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 6vw, 58px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--wine-dark);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--wine);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    opacity: 0.8;
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 44px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--wine);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--wine);
+    color: var(--white);
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    margin-right: 12px;
+    margin-bottom: 12px;
+  }
+
+  .btn-primary:hover {
+    background: var(--wine-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--wine);
+    color: var(--wine);
+    padding: 15px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+  }
+
+  .btn-outline:hover {
+    background: rgba(107,26,42,0.06);
+  }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    padding: 12px 0;
+  }
+  .divider span {
+    color: var(--wine);
+    font-size: 20px;
+    opacity: 0.5;
+  }
+
+  /* PAIN SECTION */
+  .pain {
+    background: var(--wine-dark);
+    color: var(--cream);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .pain h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .pain-intro {
+    font-size: 16px;
+    opacity: 0.75;
+    max-width: 500px;
+    margin: 0 auto 48px;
+    font-style: italic;
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .pain-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 22px 20px;
+    text-align: left;
+  }
+
+  .pain-item-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .pain-item p {
+    font-size: 15px;
+    color: rgba(250,247,242,0.85);
+    line-height: 1.6;
+  }
+
+  .pain-close {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(250,247,242,0.7);
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  /* HOW SECTION */
+  .how {
+    padding: 88px 32px;
+    background: var(--cream);
+  }
+
+  .section-label {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wine);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+    text-align: center;
+    color: var(--wine-dark);
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-sub {
+    text-align: center;
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 56px;
+    font-style: italic;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .step {
+    background: var(--white);
+    border: 1px solid rgba(107,26,42,0.1);
+    border-radius: 16px;
+    padding: 36px 28px;
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: rgba(107,26,42,0.1);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--wine-dark);
+    margin-bottom: 12px;
+  }
+
+  .step p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .step-tag {
+    display: inline-block;
+    background: rgba(107,26,42,0.07);
+    color: var(--wine);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-top: 18px;
+  }
+
+  /* DIFFERENTIATORS */
+  .diff {
+    background: var(--cream-dark);
+    padding: 72px 32px;
+  }
+
+  .diff-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .diff-list {
+    list-style: none;
+    margin-top: 48px;
+  }
+
+  .diff-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(107,26,42,0.1);
+  }
+
+  .diff-list li:last-child { border-bottom: none; }
+
+  .diff-icon {
+    width: 36px; height: 36px;
+    background: var(--wine);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .diff-icon svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2; }
+
+  .diff-text h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--wine-dark);
+    margin-bottom: 5px;
+  }
+
+  .diff-text p {
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  /* TESTIMONIALS */
+  .testi {
+    padding: 88px 32px;
+    background: var(--white);
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .testi-card {
+    background: var(--cream);
+    border: 1px solid rgba(107,26,42,0.08);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+  }
+
+  .testi-card::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    color: rgba(107,26,42,0.12);
+    line-height: 1;
+    position: absolute;
+    top: 16px;
+    left: 24px;
+  }
+
+  .testi-text {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 20px;
+    padding-top: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testi-author {
+    font-size: 13px;
+    color: var(--wine);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* CALENDAR SECTION */
+  .calendar-section {
+    padding: 56px 32px 64px;
+    background: var(--cream-dark);
+  }
+
+  .calendar-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .calendly-wrapper {
+    background: var(--white);
+    border: 1px solid rgba(107,26,42,0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 28px;
+  }
+
+  /* CONTACT STRIP */
+  .contact {
+    background: var(--wine);
+    color: var(--cream);
+    padding: 64px 32px;
+    text-align: center;
+  }
+
+  .contact h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .contact p {
+    font-size: 16px;
+    opacity: 0.8;
+    margin-bottom: 36px;
+    font-style: italic;
+  }
+
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .contact-item {
+    text-align: center;
+  }
+
+  .contact-item-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+
+  .contact-item-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--cream);
+  }
+
+  .btn-light {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--wine);
+    padding: 15px 38px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .btn-light:hover { background: var(--white); }
+
+  /* FOOTER */
+  footer {
+    background: var(--wine-dark);
+    color: rgba(250,247,242,0.5);
+    padding: 28px 32px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  footer a { color: rgba(250,247,242,0.6); }
+
+  /* UTILS */
+  .text-center { text-align: center; }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-32 { margin-top: 32px; }
+
+  @media (max-width: 600px) {
+    nav { padding: 12px 20px; }
+    .nav-logo { font-size: 15px; }
+    .hero, .how, .testi, .calendar-section, .pain, .diff, .contact { padding-left: 20px; padding-right: 20px; }
+    .hero-stats { gap: 28px; }
+    .contact-info { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Retrouvaille Monterrey</a>
+  <a href="#agendar" class="nav-cta">Agendar sesión informativa</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Programa matrimonial · Monterrey, N.L.</span>
+
+    <h1>Tu matrimonio puede<br><em>volver a florecer</em></h1>
+
+    <p class="hero-sub">
+      Si la distancia, los conflictos o el silencio se han apoderado de su relación,
+      Retrouvaille ofrece un camino real de regreso al uno al otro.
+    </p>
+    <p class="hero-note"></p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">45+</span>
+        <span class="stat-label">años de éxito</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">95%</span>
+        <span class="stat-label">lo recomiendan</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">fases de apoyo</span>
+      </div>
+    </div>
+
+    <div>
+      <a href="#agendar" class="btn-primary">Conocer el programa</a>
+      <a href="#como-funciona" class="btn-outline">Cómo funciona</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <h2>¿Reconocen alguna de estas señales?</h2>
+  <p class="pain-intro">No tienen que estar bien para llegar. Solo tienen que querer intentarlo.</p>
+
+  <div class="pain-grid">
+    <div class="pain-item">
+      <span class="pain-item-icon">💬</span>
+      <p>Discuten sin llegar a ninguna resolución, o simplemente dejaron de hablar de lo que importa.</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-item-icon">🚪</span>
+      <p>Viven bajo el mismo techo pero se sienten más como compañeros de cuarto que como pareja.</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-item-icon">💔</span>
+      <p>El romance y la conexión que tenían han desaparecido y no saben cómo recuperarlos.</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-item-icon">🌊</span>
+      <p>La amargura, el resentimiento o la desconfianza hacen que cada día sea una lucha.</p>
+    </div>
+  </div>
+
+  <p class="pain-close">"Después de años de lucha, finalmente nos sentimos esperanzados de nuevo."<br><span style="font-size:13px; opacity:0.5;">— Pareja que completó el programa</span></p>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="how" id="como-funciona">
+  <p class="section-label">El programa</p>
+  <h2 class="section-title">No es solo un fin de semana. Es un nuevo comienzo.</h2>
+  <p class="section-sub">Retrouvaille es un programa de tres fases diseñado para acompañarlos a largo plazo.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Fin de semana de encuentro</h3>
+      <p>Establezcan una comunicación saludable y significativa. Ganen nuevas perspectivas sobre ustedes como individuos y como pareja, en un ambiente privado y seguro.</p>
+      <span class="step-tag">Fin de Semana · Monterrey</span>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Sesiones de Seguimiento</h3>
+      <p>6 semanas de seguimiento enfocadas en compromiso, perdón, confianza, intimidad y comunicación.</p>
+      <span class="step-tag">Post-Seguimiento</span>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Comunidad de apoyo</h3>
+      <p>Reuniones quincenales con parejas que han vivido lo mismo. Un espacio para crecer, compartir y recordar que no están solos en este camino.</p>
+      <span class="step-tag">Sesiones CoRe</span>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADORES -->
+<section class="diff">
+  <div class="diff-inner">
+    <p class="section-label">¿Por qué Retrouvaille?</p>
+    <h2 class="section-title text-center">Un programa diferente a todo lo que han intentado</h2>
+
+    <ul class="diff-list">
+      <li>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="diff-text">
+          <h4>Privacidad total</h4>
+          <p>Jamás compartirán sus problemas personales con otros. El programa está diseñado para que cada pareja trabaje en su propia intimidad.</p>
+        </div>
+      </li>
+      <li>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="diff-text">
+          <h4>Presentado por parejas reales</h4>
+          <p>Quienes guían el programa son parejas que estuvieron en crisis y lo superaron. Hablan desde la experiencia vivida.</p>
+        </div>
+      </li>
+      <li>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="diff-text">
+          <h4>Apoyo continuo sin costo adicional</h4>
+          <p>El acompañamiento no termina el lunes. Las sesiones de seguimiento y la comunidad están disponibles para siempre.</p>
+        </div>
+      </li>
+      <li>
+        <div class="diff-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="diff-text">
+          <h4>Abierto a todos</h4>
+          <p>En Retrouvaille, lo más importante es el deseo sincero de sanar, fortalecer y salvar su matrimonio.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testi">
+  <p class="section-label">Testimonios</p>
+  <h2 class="section-title">Parejas que decidieron intentarlo</h2>
+  <p class="section-sub">Estas son sus palabras, no las nuestras.</p>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="testi-text">Llegamos pensando que nada funcionaría, que ya era demasiado tarde. El programa nos dio una oportunidad que no esperábamos encontrar.</p>
+      <span class="testi-author">Brandon & Sandy · Monterrey</span>
+    </div>
+    <div class="testi-card">
+      <p class="testi-text">Habíamos estado separados más de seis meses. Gradualmente estamos reconstruyendo nuestro matrimonio, paso a paso. No lo hubiéramos creído posible.</p>
+      <span class="testi-author">Ricardo & Mary · Monterrey</span>
+    </div>
+    <div class="testi-card">
+      <p class="testi-text">La chispa de nuestro matrimonio parecía apagada para siempre. Hoy volvemos a reconocernos. Fue un antes y un después.</p>
+      <span class="testi-author">Salvador & Virginia · Monterrey</span>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDAR SESIÓN -->
+<section class="calendar-section" id="agendar">
+  <div class="calendar-inner">
+    <p class="section-label text-center">Primer paso — sin costo</p>
+    <h2 class="section-title">Asisten a una sesión informativa gratuita</h2>
+    <p class="section-sub">Sin compromiso. Sin presión. Solo para que conozcan el programa de cerca y resuelvan todas sus dudas.<br><br>
+    <strong style="color:var(--wine);font-size:15px;">Sesiones disponibles: martes de 8 a 9 PM — del 29 de septiembre al 26 de octubre de 2025.</strong></p>
+
+    <div class="calendly-wrapper">
+      <iframe src="https://calendly.com/retrouvaillemty/sesion-informativa?hide_gdpr_banner=1&hide_event_type_details=1&primary_color=6b1a2a&embed_type=Inline&utm_source=facebook&utm_medium=paid&utm_campaign=sesion-informativa"
+              width="100%" height="630" frameborder="0" scrolling="no"
+              style="display:block;border:none;min-width:320px;">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <h2>¿Tienen dudas antes de agendar?</h2>
+  <p>Escríbannos. Respondemos con gusto, siempre con discreción.</p>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-item-label">WhatsApp</div>
+      <a href="https://wa.me/528134326461" target="_blank" style="text-decoration:none;">
+        <div class="contact-item-val">+52 81 3432 6461</div>
+      </a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Correo</div>
+      <a href="mailto:retrouvaillemty@gmail.com" style="text-decoration:none;">
+        <div class="contact-item-val">retrouvaillemty@gmail.com</div>
+      </a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Ciudad</div>
+      <div class="contact-item-val">Monterrey, N.L.</div>
+    </div>
+  </div>
+
+  <a href="#agendar" class="btn-light">Agendar sesión informativa</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Retrouvaille Monterrey · Apostolado matrimonial sin fines de lucro · Parte de <a href="https://ayudanuestromatrimonio.org" target="_blank">Retrouvaille International</a></p>
+  <p style="margin-top:8px;">
+    <a href="mailto:retrouvaillemty@gmail.com">retrouvaillemty@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://wa.me/528134326461" target="_blank">WhatsApp +52 81 3432 6461</a>
+  </p>
+</footer>
+
+<script>
+  /* Offset para anclas — compensa el nav fijo de 60px */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 72;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  /* Si la URL ya trae #agendar al cargar (desde el anuncio), hace scroll automático */
+  window.addEventListener('load', () => {
+    if (window.location.hash === '#agendar') {
+      setTimeout(() => {
+        const target = document.getElementById('agendar');
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }, 600);
+    }
+  });
+</script>
+
+</body>
+</html>
